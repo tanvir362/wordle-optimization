@@ -1,0 +1,9 @@
+/bin/
+/target/
+/.project
+/.classpath
+/.idea
+/config/testcases
+/config/test*.json
+/src/main/resources/view/assets
+/src/test

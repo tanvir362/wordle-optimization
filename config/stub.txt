@@ -1,0 +1,8 @@
+read wordLength:int
+gameloop
+loopline wordLength state:int
+write GUESS
+
+INPUT
+wordLength: Length of the word
+state: State of the letter of the corresponding position of previous guess

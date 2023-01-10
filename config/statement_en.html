@@ -1,0 +1,172 @@
+<div id="statement_back" class="statement_back" style="display:none"></div>
+<div class="statement-body">
+  <!-- GOAL -->
+  <div class="statement-section statement-goal">
+    <h1>
+      <span class="icon icon-goal">&nbsp;</span>
+      <span>The Goal</span>
+    </h1>
+    <div class="statement-goal-content">
+      This is an addaptation of an online game Wordle <a href="https://www.nytimes.com/games/wordle/index.html">(https://www.nytimes.com/games/wordle/index.html)</a> with slightly modification in the rules.
+      <br><br>The goal of the game is to guess the correct word based on the hints given each turn.
+    </div>
+  </div>
+  <!-- RULES -->
+  <div class="statement-section statement-rules">
+    <h1>
+      <span class="icon icon-rules">&nbsp;</span>
+      <span>Rules</span>
+    </h1>
+    <div>
+      <div class="statement-rules-content">
+
+    <ol>
+      <li>At the start of the game player will get the length of the word.</li>
+      <li>Each turn player will guess a word.</li>
+      <li>After each guess player will know the states of the letters for the corresponding positions of the guess.<br><br>
+      Letter at a position can have four states:
+              <ul type="i">
+          <li>State <const>1</const> means the letter at the position is <strong>not present in the word </strong>.</li>
+          <li>State <const>2</const> means the letter at the position is <strong> present in the word</strong> but <strong>position is incorrect</strong>.</li>
+          <li>State <const>3</const> means the letter at the position is <strong>present in the word</strong> and <strong>position is correct</strong>.</li>
+          <li>State <const>0</const> means <strong>unknown</strong>.</li>
+        </ul>
+        Same letter twice or multiple times in the word will work as following:
+        <ul>
+          <li>If <strong>ORBIT</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the <strong>2nd</strong> position has state <strong>2</strong> and <strong>B</strong> at the <strong>3rd</strong> position has state <strong>3</strong>.</li>
+          <li>If <strong>CELEB</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>2</strong>.</li>
+          <li>If <strong>SHARP</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>1</strong>.</li>
+        </ul>
+         
+      </li>
+      <li>
+        A letter can appear multiple times in the word.
+      </li>
+      <li>Leaderboard is ascended by the total guesses among all the test cases.</li>
+
+    
+
+    </ol>
+
+      <br><strong>N.B:</strong> The <strong>word</strong> player will guess not necessarily be a real word.<br>
+      </div>
+    </div>
+  </div>
+      <div class="statement-section statement-rules">
+        <!-- Victory conditions -->
+        <div class="statement-victory-conditions">
+            <div class="icon victory"></div>
+            <div class="blk">
+                <div class="title">Victory Conditions</div>
+                <div class="text">
+                    <ul style="padding-top:0; padding-bottom: 0;">
+                        <li>
+                          You guess correct before the time is out.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Lose conditions -->
+        <div class="statement-lose-conditions">
+            <div class="icon lose"></div>
+            <div class="blk">
+                <div class="title">Defeat Conditions</div>
+                <div class="text">
+                    <ul style="padding-top:0; padding-bottom: 0;">
+                        <li>
+                          You use more than 26 guess.
+                        </li>
+                        <li>
+                          You provide invalid action
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <h3 style="font-size: 14px;
+                      font-weight: 700;
+                      padding-top: 15px;
+    color: #838891;
+                      padding-bottom: 15px;">
+            🐞 Debugging tips</h3>
+        <ul>
+            <li>Press the gear icon on the viewer to access extra display options</li>
+            <li>Use the keyboard to control the action: space to play/pause, arrows to step 1 frame at a time</li>
+            <li>For printing out anything, use stderror</li>
+        </ul>
+    </div>
+
+  <!-- EXPERT RULES -->
+
+  <!-- EXAMPLES -->
+  
+  <!-- WARNING -->
+  <div class="statement-section statement-warning">
+    <h1>
+      <span class="icon icon-warning">&nbsp;</span>
+      <span>Note</span>
+    </h1>
+    <div class="statement-warning-content">
+      The program must, within an infinite loop, read the contextual data from the standard input and provide to the standard output the desired instructions.<br>
+    </div>
+  </div>
+
+  <!-- PROTOCOL -->
+  <div class="statement-section statement-protocol">
+    <h1>
+      <span class="icon icon-protocol">&nbsp;</span>
+      <span>Game Input</span>
+    </h1>
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="text">The program must first read the initialization data from standard input. Then, provide to the standard output one line for each game turn.</div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Initializaton input</div>
+      <div class="text">
+        <p><span class="statement-lineno">A single line: </span>An integer <var>wordLength</var>, length of the word.</p>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Input for one game turn</div>
+      <div class="text">
+        <p><span class="statement-lineno">A single line: </span><var>wordLength</var> amount of space separated integers, each representing the <var>state</var> of the letter of the corresponding position of previous guess.</p>
+        For the first turn all the <var>wordLength</var> amount of states are <const>0</const>.
+         
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Output</div>
+      <div class="text">
+        <span class="statement-lineno">A single line</span> containing a word of length <var>wordLength</var> in uppercase.
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Constraints</div>
+      <div class="text">5 ≤ <var>wordLength</var> ≤ 8
+    </div>
+  </div>
+  <!-- STORY -->
+  <!-- <div class="statement-story-background">
+    <div class="statement-story-cover" style="background-size: cover; background-image: url(https://www.codingame.com/servlet/fileservlet?id=2210505809934)">
+      <div class="statement-story">
+        <h1>Title</h1>
+        <div class="story-text">Story
+          <br>
+          Totally optional</div>
+      </div>
+    </div>
+  </div> -->
+</div>
