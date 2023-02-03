@@ -116,7 +116,7 @@ public class Referee extends AbstractReferee {
         magicalWord = gameManager.getTestCaseInput().get(0);
         Constant.WORD_LEN = magicalWord.length();
 
-        System.out.println(String.format("%s %d", magicalWord, magicalWord.length()));
+//        System.out.println(String.format("%s %d", magicalWord, magicalWord.length()));
     }
 
     @Override
@@ -124,6 +124,11 @@ public class Referee extends AbstractReferee {
         // Initialize your game here.
         gameManager.setFrameDuration(1300);
         gameManager.setMaxTurns(26);
+        gameManager.setFirstTurnMaxTime(1000);
+        gameManager.setTurnMaxTime(50);
+
+//        System.out.println("Game properties:");
+//        System.out.println(String.format("FirstTurnMaxTime: %d\n TurnMaxTime: %d\n MaxTurns: %d", gameManager.getFirstTurnMaxTime(), gameManager.getTurnMaxTime(), gameManager.getMaxTurns()));
 
         setMagicalWord();
         sendInitialInput();
