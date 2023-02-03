@@ -7,7 +7,7 @@
       <span>The Goal</span>
     </h1>
     <div class="statement-goal-content">
-      This is an addaptation of an online game Wordle <a href="https://www.nytimes.com/games/wordle/index.html">(https://www.nytimes.com/games/wordle/index.html)</a> with slightly modification in the rules.
+      This is an adaptation of an online game Wordle <a href="https://www.nytimes.com/games/wordle/index.html">(https://www.nytimes.com/games/wordle/index.html)</a> with slight modifications in the rules.
       <br><br>The goal of the game is to guess the correct word based on the hints given each turn.
     </div>
   </div>
@@ -21,26 +21,24 @@
       <div class="statement-rules-content">
 
     <ol>
-      <li>At the start of the game player will get the length of the word.</li>
-      <li>Each turn player will guess a word.</li>
-      <li>After each guess player will know the states of the letters for the corresponding positions of the guess.<br><br>
+      <li>At the start of the game, the player will get the length of the word.</li>
+      <li>At each turn, the player will guess a word.</li>
+      <li>After each guess, the player will know the state of each letter.<br>
       Letter at a position can have four states:
               <ul type="i">
           <li>State <const>1</const> means the letter at the position is <strong>not present in the word </strong>.</li>
           <li>State <const>2</const> means the letter at the position is <strong> present in the word</strong> but <strong>position is incorrect</strong>.</li>
           <li>State <const>3</const> means the letter at the position is <strong>present in the word</strong> and <strong>position is correct</strong>.</li>
           <li>State <const>0</const> means <strong>unknown</strong>.</li>
-        </ul>
+        </ul>   
+      </li>
+      <li>A letter can appear multiple times in the word.<br>
         Same letter twice or multiple times in the word will work as following:
-        <ul>
+        <ul type="i">
           <li>If <strong>ORBIT</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the <strong>2nd</strong> position has state <strong>2</strong> and <strong>B</strong> at the <strong>3rd</strong> position has state <strong>3</strong>.</li>
           <li>If <strong>CELEB</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>2</strong>.</li>
           <li>If <strong>SHARP</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>1</strong>.</li>
         </ul>
-         
-      </li>
-      <li>
-        A letter can appear multiple times in the word.
       </li>
       <li>Leaderboard is ascended by the total guesses among all the test cases.</li>
 
@@ -48,7 +46,7 @@
 
     </ol>
 
-      <br><strong>N.B:</strong> The <strong>word</strong> player will guess not necessarily be a real word.<br>
+      <br><strong>N.B:</strong> The <strong>word</strong> the player will guess at each turn is not necessarily a real word.<br>
       </div>
     </div>
   </div>
@@ -61,7 +59,7 @@
                 <div class="text">
                     <ul style="padding-top:0; padding-bottom: 0;">
                         <li>
-                          You guess correct before the time is out.
+                          You guess the word in less than 27 turns.
                         </li>
                     </ul>
                 </div>
@@ -75,7 +73,7 @@
                 <div class="text">
                     <ul style="padding-top:0; padding-bottom: 0;">
                         <li>
-                          You use more than 26 guess.
+                          You use more than 26 guesses.
                         </li>
                         <li>
                           You provide invalid action
@@ -155,7 +153,10 @@
     <!-- Protocol block -->
     <div class="blk">
       <div class="title">Constraints</div>
-      <div class="text">5 ≤ <var>wordLength</var> ≤ 8
+      <div class="text">5 ≤ <var>wordLength</var> ≤ 8</div>
+      <div class="text"><var>FirstTurnMaxTime</var> = 1000 ms</div>
+      <div class="text"><var>TurnMaxTime</var> = 50 ms</div>
+      <div class="text"><var>MaxTurns</var> = 26</div>
     </div>
   </div>
   <!-- STORY -->
