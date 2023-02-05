@@ -115,8 +115,8 @@ public class Referee extends AbstractReferee {
     private void setMagicalWord(){
         String[] inputWords = gameManager.getTestCaseInput().get(0).split("\\s+");
         magicalWord = inputWords[new Random().nextInt(inputWords.length)];
-        System.out.println("TesCase Input");
-        System.out.println(gameManager.getTestCaseInput().toString());
+//        System.out.println("TesCase Input");
+//        System.out.println(gameManager.getTestCaseInput().toString());
         Constant.WORD_LEN = magicalWord.length();
 
 //        System.out.println(String.format("%s %d", magicalWord, magicalWord.length()));
