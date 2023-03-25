@@ -3,6 +3,9 @@ gameloop
 loopline wordLength state:int
 write GUESS
 
+STATEMENT
+Made by Tanvir
+
 INPUT
 wordLength: Length of the word
 state: State of the letter of the corresponding position of previous guess
