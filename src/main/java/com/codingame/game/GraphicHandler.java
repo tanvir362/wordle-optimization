@@ -10,20 +10,22 @@ import java.util.ArrayList;
 public class GraphicHandler {
 
     public static final int BOARD_HEIGHT = 8;
+    public static final int SCREEN_WIDTH = 1920;
+    public static final int SCREEN_HEIGHT = 1080;
 
     private static double getOffset(){
         return 1.25+100+1.25+13.5;
     }
 
     private static int getBaseX(Player player){
-        return (int)(1920/2) - (int)getOffset()*(Constant.WORD_LEN/2);
+        return (int)(SCREEN_WIDTH/2) - (int)getOffset()*(Constant.WORD_LEN/2);
     }
 
     private static int getBaseY(Player player){
         return 50;
 
         //for length 6
-//        return (int)1080/2 - 280;
+//        return (int)SCREEN_HEIGHT/2 - 280;
     }
 
     public static void drawLetter(Player player, char letter, int state, int row, int column, GraphicEntityModule graphicEntityModule){
@@ -87,46 +89,16 @@ public class GraphicHandler {
 
 
     public static void drawHud(SoloGameManager<Player> gameManager, GraphicEntityModule graphicEntityModule) {
-//        for (Player player : gameManager.getPlayers()) {
-//            int x = player.getIndex() == 0 ? 100 : 1920 - 100;
-//            int y = 75;
-//
-//            graphicEntityModule
-//                    .createRectangle()
-//                    .setWidth(140)
-//                    .setHeight(140)
-//                    .setX(x - 70)
-//                    .setY(y - 70)
-//                    .setLineWidth(0)
-//                    .setFillColor(player.getColorToken());
-//
-//            graphicEntityModule
-//                    .createRectangle()
-//                    .setWidth(120)
-//                    .setHeight(120)
-//                    .setX(x - 60)
-//                    .setY(y - 60)
-//                    .setLineWidth(0)
-//                    .setFillColor(0xffffff);
-//
-//            Text text = graphicEntityModule.createText(player.getNicknameToken())
-//                    .setX(x)
-//                    .setY(y + 120)
-//                    .setZIndex(20)
-//                    .setFontSize(40)
-//                    .setFillColor(0xffffff)
-//                    .setAnchor(0.5);
-//
-//            Sprite avatar = graphicEntityModule.createSprite()
-//                    .setX(x)
-//                    .setY(y)
-//                    .setZIndex(20)
-//                    .setImage(player.getAvatarToken())
-//                    .setAnchor(0.5)
-//                    .setBaseHeight(116)
-//                    .setBaseWidth(116);
-//
-//            player.hud = graphicEntityModule.createGroup(text, avatar);
-//        }
+        graphicEntityModule.createSprite()
+                .setImage(gameManager.getPlayer().getAvatarToken())
+                .setX(SCREEN_WIDTH-10)
+                .setY(SCREEN_HEIGHT-10)
+                .setAnchorX(1)
+                .setAnchorY(1)
+                .setZIndex(0)
+                .setAlpha(0.5)
+                .setBaseHeight(100)
+                .setBaseWidth(100)
+        ;
     }
 }

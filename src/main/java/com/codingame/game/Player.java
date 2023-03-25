@@ -14,7 +14,7 @@ import java.util.zip.CheckedOutputStream;
     private HashMap<Character, LetterState> alphabetStates;
     private List<LetterState> turnInput;
 
-    public Group hud;
+    public Sprite hud;
     public List<Sprite[]> board;
     public List<LetterState[]> outputHistory;
 
