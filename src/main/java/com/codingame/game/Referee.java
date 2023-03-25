@@ -1,6 +1,7 @@
 package com.codingame.game;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
@@ -27,11 +28,14 @@ public class Referee extends AbstractReferee {
 
     private String magicalWord; //the word needs to guess
     private int guessNeeded = 0;
+    private boolean isAWin = false;
+    private boolean isInvalidAction = false;
 
     //process output and update player's states
     private void process_output(Player player, String output){
         if (output.length() != Constant.WORD_LEN){
-            gameManager.loseGame("Invalid output!");
+            isInvalidAction = true;
+            gameManager.loseGame("Invalid guess, try again.");
             return;
         }
 
@@ -40,8 +44,13 @@ public class Referee extends AbstractReferee {
         //preparing player's next turninput state and generating report for current turn
         for(int i=0; i<Constant.WORD_LEN; i++){
             char ch = output.charAt(i);
-            int state, pos;
+            if(!(ch>='a' && ch<='z') && !(ch>='A' && ch<='Z')){
+                isInvalidAction = true;
+                gameManager.loseGame("Invalid guess, try again.");
+                return;
+            }
 
+            int state, pos;
             if(magicalWord.charAt(i) == ch){
                 state = Constant.ALL_KNOWN_STATE;
                 pos = i+1;
@@ -62,7 +71,7 @@ public class Referee extends AbstractReferee {
 
         }
         gameManager.addToGameSummary(
-            String.format("You guesses %s: %s", output, String.join(" ", report))
+            String.format("Guess: %s - %s", output, String.join(" ", report))
         );
 
         player.outputHistory.add(letterStates);
@@ -113,9 +122,18 @@ public class Referee extends AbstractReferee {
     }
 
     private void setMagicalWord(){
-        String[] inputWords = gameManager.getTestCaseInput().get(0).split("\\s+");
-        magicalWord = inputWords[new Random().nextInt(inputWords.length)];
-//        System.out.println("TesCase Input");
+        String[] inputs = gameManager.getTestCaseInput().get(0).split("\\s+");
+        if(inputs[0].equals("T")){
+            magicalWord = inputs[1];
+        }
+        else {
+//            magicalWord = inputs[new Random().nextInt(inputs.length-2) + 2];
+            int length = Integer.parseInt(inputs[1]);
+            magicalWord = new Random().ints(length, 'A', 'Z' + 1).mapToObj(c -> String.valueOf((char) c)).collect(Collectors.joining());
+        }
+//        System.err.println("magial word " + magicalWord);
+
+//        System.err.println("TesCase Input " + String.join(" ", inputs));
 //        System.out.println(gameManager.getTestCaseInput().toString());
         Constant.WORD_LEN = magicalWord.length();
 
@@ -160,7 +178,8 @@ public class Referee extends AbstractReferee {
             GraphicHandler.drawLiveBoard(player, graphicEntityModule);
 
             if(magicalWord.equals(output)){
-                gameManager.winGame("Congratulations! You guessed correct");
+                isAWin = true;
+                gameManager.winGame("Congratulations! You guessed it right.");
             }
         } catch (TimeoutException e) {
             gameManager.loseGame("Timeout!");
@@ -170,8 +189,14 @@ public class Referee extends AbstractReferee {
 
     @Override
     public void onEnd() {
+        if(!isAWin && !isInvalidAction){
+            gameManager.addToGameSummary("You're getting close, try again soon.");
+        }
         gameManager.putMetadata("guess", String.valueOf(guessNeeded));
+
+        endScreenModule.setScores( new int[]{}, new String[]{isAWin ? "Success!" : "Try again"});
     }
+
 
 
 }
