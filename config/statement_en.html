@@ -26,18 +26,18 @@
       <li>After each guess, the player will know the state of each letter.<br>
       Letter at a position can have four states:
               <ul type="i">
-          <li>State <const>1</const> means the letter at the position is <strong>not present in the word </strong>.</li>
+          <li>State <const>1</const> means the letter at the position is <strong>not present in the word</strong>.</li>
           <li>State <const>2</const> means the letter at the position is <strong> present in the word</strong> but <strong>position is incorrect</strong>.</li>
           <li>State <const>3</const> means the letter at the position is <strong>present in the word</strong> and <strong>position is correct</strong>.</li>
-          <li>State <const>0</const> means <strong>unknown</strong>.</li>
+          <li>State <const>0</const> means <strong>unknown</strong>. For the first turn only.</li>
         </ul>   
       </li>
       <li>A letter can appear multiple times in the word.<br>
-        Same letter twice or multiple times in the word will work as following:
+        Same letter twice or multiple times in the word will work as follows:
         <ul type="i">
-          <li>If <strong>ORBIT</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the <strong>2nd</strong> position has state <strong>2</strong> and <strong>B</strong> at the <strong>3rd</strong> position has state <strong>3</strong>.</li>
-          <li>If <strong>CELEB</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>2</strong>.</li>
-          <li>If <strong>SHARP</strong> is the word and player guessed <strong>ABBEY</strong>. <strong>B</strong> at the both <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>1</strong>.</li>
+          <li>If <strong>ORBIT</strong> is the word and player guessed <strong>ABBEY</strong>, <strong>B</strong> at the <strong>2nd</strong> position has state <strong>2</strong> and <strong>B</strong> at the <strong>3rd</strong> position has state <strong>3</strong>.</li>
+          <li>If <strong>CELEB</strong> is the word and player guessed <strong>ABBEY</strong>, <strong>B</strong> at both the <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>2</strong>.</li>
+          <li>If <strong>SHARP</strong> is the word and player guessed <strong>ABBEY</strong>, <strong>B</strong> at both the <strong>2nd</strong> and <strong>3rd</strong> position have state <strong>1</strong>.</li>
         </ul>
       </li>
       <li>Leaderboard is ascended by the amount of total guesses among all the validation test cases.</li>
@@ -46,7 +46,7 @@
 
     </ol>
 
-      <br><strong>N.B:</strong> The <strong>word</strong> the player will guess at each turn is not necessarily a real word.<br>
+      <br><strong>N.B: The word the player will guess is not necessarily a real word</strong>.<br>
       </div>
     </div>
   </div>
@@ -76,7 +76,14 @@
                           You use more than 26 guesses.
                         </li>
                         <li>
-                          You provide invalid action
+                          You make a guess which is too short or too long.
+                        </li>
+                        <li>
+                          Your guess containing characters other than alphabetical letters.
+
+
+
+
                         </li>
                     </ul>
                 </div>
@@ -102,7 +109,7 @@
   <!-- EXAMPLES -->
   
   <!-- WARNING -->
-  <div class="statement-section statement-warning">
+  <!-- <div class="statement-section statement-warning">
     <h1>
       <span class="icon icon-warning">&nbsp;</span>
       <span>Note</span>
@@ -110,7 +117,7 @@
     <div class="statement-warning-content">
       The program must, within an infinite loop, read the contextual data from the standard input and provide to the standard output the desired instructions.<br>
     </div>
-  </div>
+  </div> -->
 
   <!-- PROTOCOL -->
   <div class="statement-section statement-protocol">
@@ -133,7 +140,7 @@
 
     <!-- Protocol block -->
     <div class="blk">
-      <div class="title">Input for one game turn</div>
+      <div class="title">Input for a game turn</div>
       <div class="text">
         <p><span class="statement-lineno">A single line: </span><var>wordLength</var> amount of space separated integers, each representing the <var>state</var> of the letter of the corresponding position of previous guess.</p>
         For the first turn all the <var>wordLength</var> amount of states are <const>0</const>.
@@ -143,7 +150,7 @@
 
     <!-- Protocol block -->
     <div class="blk">
-      <div class="title">Output</div>
+      <div class="title">Output for a game turn</div>
       <div class="text">
         <span class="statement-lineno">A single line</span> containing a word of length <var>wordLength</var> in uppercase.
         <br>
@@ -153,10 +160,10 @@
     <!-- Protocol block -->
     <div class="blk">
       <div class="title">Constraints</div>
-      <div class="text">5 ≤ <var>wordLength</var> ≤ 8</div>
-      <div class="text"><var>FirstTurnMaxTime</var> = 1000 ms</div>
-      <div class="text"><var>TurnMaxTime</var> = 50 ms</div>
-      <div class="text"><var>MaxTurns</var> = 26</div>
+      <div class="text"><const>5</const> ≤ <var>wordLength</var> ≤ <const>8</const></div>
+      <div class="text">Response time per turn ≤ <const>50</const> ms</div>
+      <div class="text">Response time for the first turn ≤ <const>1000</const> ms</div>
+      <div class="text">Number of turns ≤ <const>26</const></div>
     </div>
   </div>
   <!-- STORY -->
